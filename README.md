@@ -27,4 +27,10 @@ In the command line, run
 
 `php artisan serve`
 
-Must have php, composer and npm installed.
+Must have postgres, php, composer and npm installed.
+
+### Tech Stack
+
+-   Laravel
+-   Postgres
+-   Tailwind
