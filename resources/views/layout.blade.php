@@ -16,17 +16,16 @@
                 <a href="{{ route('home') }}" class="p-3">Home</a>
             </li>
             <li>
-                <a href="{{ route('dashboard') }}" class="p-3">Dashboard</a>
-            </li>
-            <li>
                 <a href="{{ route('ranks') }}" class="p-3">Rankings</a>
             </li>
+            @auth
+                <li>
+                    <a href="{{ route('dashboard') }}" class="p-3">Dashboard<span class="pl-1 text-red-600">({{auth()->user()->username}})</span></a>
+                </li>
+            @endauth
         </ul>
         <ul class="flex items-center">
             @auth
-                <li>
-                    <a href="" class="p-3">{{ auth()->user()->username }}</a>
-                </li>
                 <li>
                     <form action="logout" method="post" class="p-3 inline">
                         @csrf

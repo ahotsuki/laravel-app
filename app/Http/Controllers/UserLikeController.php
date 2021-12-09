@@ -14,6 +14,14 @@ class UserLikeController extends Controller
         $this->middleware(['auth']);
     }
 
+    public function index(User $user){
+        $users = User::with(['likes'])->get()->sortByDesc(function($user){
+            return $user->likes->count();
+        })->toArray();
+        $rank = array_search($user->id, array_column($users, 'id'));
+        return view('page', ['user' => $user, 'rank'=>$rank]);
+    }
+
     public function store(User $user, Request $request){
 
         if($user->likedBy($request->user())){
